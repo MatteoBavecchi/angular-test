@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { TodosService } from "../services/todos.service";
-import { TodoInterface } from "../types/todo.interface";
+import { TodosService } from "../../services/todos.service";
+import { TodoInterface } from "../../types/todo.interface";
 
 @Component({
     selector: "app-todos-header",
