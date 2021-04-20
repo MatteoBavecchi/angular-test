@@ -7,6 +7,8 @@ import { MainComponent } from "./components/main/main.component";
 import { CommonModule } from "@angular/common";
 import { TodoComponent } from "./components/todo/todo.component";
 import { FooterComponent } from "./components/footer/footer.component";
+import { FakeInterceptor } from "./services/todos.interceptor";
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
 
 const routes: Routes = [
     {
@@ -17,6 +19,13 @@ const routes: Routes = [
 @NgModule({
     declarations: [TodosComponent, HeaderComponent, MainComponent, TodoComponent, FooterComponent],
     imports: [CommonModule, RouterModule.forChild(routes)],
-    providers: [TodosService]
+    providers: [
+        TodosService,
+        FakeInterceptor,
+        {
+            provide: HTTP_INTERCEPTORS,
+            useClass: FakeInterceptor,
+            multi: true
+        }]
 })
 export class TodosModule { }
